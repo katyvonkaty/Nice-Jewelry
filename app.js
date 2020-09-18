@@ -15,7 +15,7 @@ mongoose.connect("mongodb://localhost:27017/userDB", {
 })
 
 const userSchema = {
-  email: String,
+  username: String,
   password: String
 }
 
@@ -25,7 +25,9 @@ app.get("/", function(req, res) {
   res.render("index")
 })
 
-
+app.get("/register", function(req, res) {
+  res.render("shop")
+})
 
 app.get("/shop", function(req, res) {
   res.render("shop")
@@ -53,6 +55,10 @@ app.post("/login", function(req, res) {
     }
   });
 });
+
+app.post("/register", function(req,res){
+  // const username =
+})
 
 
 app.listen(process.env.PORT || 3000, function() {
