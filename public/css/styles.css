@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
 
+html {
+    position: relative;
+    height:100%;
+}
+
 body {
   font-family: 'Kumbh Sans', sans-serif;
   background-color: transparent !important;
@@ -43,13 +48,35 @@ h1, h2, h3, h4, h5 {
   margin-top: 40px;
 }
 
+.btn-outline-primary, .btn-primary {
+    color: black;
+    background-color:transparent;
+    border-color: black;
+}
+
+.btn-primary:hover {
+  color: black;
+  background-color: white;
+  border-color: black;
+
+}
+
+.bg-primary {
+  background-color: #e9ecef !important;
+}
+
+.btn-outline-primary:hover {
+color: black;
+background-color: white;
+border-color: black;
+}
+
 #sticky-footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   padding-right:0;
   padding-left:0;
-
 
 }
 

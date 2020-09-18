@@ -9,16 +9,23 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 
-app.get("/", function(req,res){
+app.get("/", function(req, res) {
   res.render("index")
 })
 
-app.get("/signin", function(req,res){
-  res.render("signin")
+app.get("/login", function(req, res) {
+  res.render("login")
 })
 
-
-
-app.listen(process.env.PORT || 3000, function(){
-  console.log("all systems go")
+app.get("/shop", function(req, res) {
+  res.render("shop")
 })
+
+app.post("/login", function(req, res) {
+    res.redirect("/shop")
+});
+
+
+  app.listen(process.env.PORT || 3000, function() {
+    console.log("all systems go")
+  })
