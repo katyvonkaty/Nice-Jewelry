@@ -1,13 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
 
 html {
-    position: relative;
-    height:100%;
+  min-height: 100%;
+   position: relative;
 }
 
 body {
   font-family: 'Kumbh Sans', sans-serif;
   background-color: transparent !important;
+}
+
+.navbar {
+  border-bottom: 1px solid #F1F0F0
 }
 
 h1, h2, h3, h4, h5 {
@@ -18,12 +22,26 @@ h1, h2, h3, h4, h5 {
   width: 30% !important;
 }
 
+.about{
+  text-align:center;
+  padding:30px;
+}
+
 .lead {
   margin-top: 40px;
 }
 
+.intermezzo h3 {
+  margin-top:60px;
+}
+
+.badge-secondary {
+    color: #fff;
+    background-color: #f3adcaba;
+}
+
 .display-3 {
-  margin-top: 70px;
+  margin-top: 170px;
 }
 
 .navbar {
@@ -35,6 +53,29 @@ h1, h2, h3, h4, h5 {
   height: 70vh;
   background-size: cover;
 }
+
+
+#about {
+  background-image: url("https://cdn.shopify.com/s/files/1/0039/8002/files/HP_hero_dktp_1500x900.jpg?v=1589810588");
+  height: 70vh;
+  background-size: cover;
+}
+
+#black {
+background-color: black;
+padding: 50px;
+}
+
+#black img {
+  width:80%;
+}
+
+#black h3,p {
+  color:white;
+  text-align:center;
+  margin-top:90px;
+}
+
 
 .billboard {
   margin-top: 40px;
@@ -73,8 +114,8 @@ border-color: black;
 
 #sticky-footer {
   position: absolute;
-  bottom: 0;
-  width: 100%;
+ bottom: 0;
+ width: 100%;
   padding-right:0;
   padding-left:0;
 
@@ -179,4 +220,14 @@ border-color: black;
 .btn-facebook {
   color: white;
   background-color: #3b5998;
+}
+
+.followus {
+  margin-bottom:80px;
+}
+
+.followus h1 {
+  text-align: center;
+  padding:30px;
+  margin-top:30px;
 }
