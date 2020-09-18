@@ -13,6 +13,11 @@ app.get("/", function(req,res){
   res.render("index")
 })
 
+app.get("/signin", function(req,res){
+  res.render("signin")
+})
+
+
 
 app.listen(process.env.PORT || 3000, function(){
   console.log("all systems go")
