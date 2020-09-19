@@ -88,7 +88,10 @@ app.post("/login", function(req, res) {
           res.render("reviews")
         } else {
           res.redirect("404")
+          console.log(foundUser.password)
         }
+      } else {
+        res.redirect("404");
       }
     }
   });

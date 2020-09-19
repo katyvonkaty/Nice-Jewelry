@@ -2,6 +2,7 @@
 
 html {
   min-height: 100%;
+  width:100%;
    position: relative;
 }
 
@@ -111,6 +112,15 @@ padding: 50px;
   background-color: white;
   border-color: black;
 
+}
+
+.four{
+  width:100%;
+}
+
+#fourcopy {
+  text-align:center;
+  padding:30px;
 }
 
 .bg-primary {
