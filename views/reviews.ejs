@@ -2,22 +2,24 @@
 
 <%- include('./partials/navbar') %>
 
-<div id="black">
-  <div class="container-fluid">
+
+  <div class="container" id="reviews">
+    <h2> Recent Reviews </h2>
     <div class="row">
-        <div class="col-sm-12 ">
-      <h3> Welcome Back <%= usersWithReviews[0].username %></h3> <br>
-      </div>
-    <div class="col-sm-3 offset-sm-2 ">
+    <div class="col-sm-6 offset-sm-2">
+
       <% usersWithReviews.forEach(function(user) { %>
-      <p> <%= user.review %> </p>
+      <h4> <%= user.review %> </h4>
+      <p> written by <%= user.username.split('@')[0] %> </p>
+      <hr>
       <%  }) %>
     </div>
   </div>
-</div>
+  <div class="buttons">
+  <a class="btn btn-lg btn-outline-primary" href="/submit" role="button">Leave a review</a>
+  <a class="btn btn-lg btn-outline-primary" href="/logout" role="button">Log Out</a>
+  </div>
 </div>
 
-<a class="btn btn-lg btn-outline-primary" href="/logout" role="button">Log Out</a>
-<a class="btn btn-lg btn-outline-primary" href="/submit" role="button">Leave a review</a>
 
 <%- include('./partials/footer') %>
