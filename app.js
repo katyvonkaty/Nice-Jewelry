@@ -8,9 +8,9 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const findOrCreate = require("mongoose-findorcreate");
-// const LinkedInStrategy = require("passport-linkedin");
 
 const app = express();
+
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -27,7 +27,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect("mongodb://localhost:27017/userDB", {
+mongoose.connect("mongodb+srv://admin-katie:"+process.env.MONGO_PASSWORD+"@jewel.dj1hl.mongodb.net/userDB", {
   useNewUrlParser: true
 })
 mongoose.set("useCreateIndex", true);
@@ -57,9 +57,9 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use(new GoogleStrategy({
-    clientID:     process.env.CLIENT_ID,
+    clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/reviews",
+    callbackURL: "https://quiet-wildwood-52939.herokuapp.com/auth/google/reviews",
     userProfileURL: 'https://www.googleapis.com/oauth2/v3/userinfo',
     passReqToCallback   : true
   },
@@ -69,19 +69,6 @@ passport.use(new GoogleStrategy({
     });
   }
 ));
-
-// passport.use(new LinkedInStrategy({
-//     consumerKey: LINKEDIN_API_KEY,
-//     consumerSecret: LINKEDIN_SECRET_KEY,
-//     callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback"
-//   },
-//   function(token, tokenSecret, profile, done) {
-//     User.findOrCreate({ linkedinId: profile.id }, function (err, user) {
-//       return done(err, user);
-//     });
-//   }
-// ));
-//
 
 app.get("/", function(req, res) {
   res.render("index")
@@ -129,6 +116,7 @@ app.get("/reviews", function(req, res) {
       console.log(err);
     } else {
       if(foundUsers) {
+
         res.render("reviews", {usersWithReviews: foundUsers});
       }
     }
