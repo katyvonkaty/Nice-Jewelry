@@ -72,7 +72,6 @@ padding: 50px;
   margin-bottom:90px;
 }
 
-
 #black img {
   width:80%;
 }
@@ -146,6 +145,10 @@ border-color: black;
   border: 0;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+  height: calc(2.25rem + 15px) !important;
 }
 
 .card-signin .card-title {
@@ -251,4 +254,16 @@ border-color: black;
   text-align: center;
   padding:30px;
   margin-top:30px;
+}
+
+#reviews, #submit{
+  text-align: center;
+  padding:30px;
+}
+#reviews p {
+  text-align:left;
+}
+
+#reviews h4 {
+  text-align:left;
 }
