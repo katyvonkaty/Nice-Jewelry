@@ -8,7 +8,7 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const findOrCreate = require("mongoose-findorcreate");
-
+// const LinkedInStrategy = require("passport-linkedin");
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({
   extended: true
-}))
+}));
 
 app.use(session({
   secret:"cockapoos are my life blood",
@@ -35,7 +35,8 @@ mongoose.set("useCreateIndex", true);
 const userSchema = new mongoose.Schema({
   email: String,
   password: String,
-  googleId: String
+  googleId: String,
+  review: String
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -63,13 +64,24 @@ passport.use(new GoogleStrategy({
     passReqToCallback   : true
   },
   function(request, accessToken, refreshToken, profile, done) {
-    console.log(profile);
     User.findOrCreate({ googleId: profile.id }, function (err, user) {
       return done(err, user);
     });
   }
 ));
 
+// passport.use(new LinkedInStrategy({
+//     consumerKey: LINKEDIN_API_KEY,
+//     consumerSecret: LINKEDIN_SECRET_KEY,
+//     callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback"
+//   },
+//   function(token, tokenSecret, profile, done) {
+//     User.findOrCreate({ linkedinId: profile.id }, function (err, user) {
+//       return done(err, user);
+//     });
+//   }
+// ));
+//
 
 app.get("/", function(req, res) {
   res.render("index")
@@ -77,7 +89,7 @@ app.get("/", function(req, res) {
 
 app.get("/auth/google",
   passport.authenticate("google", {scope: ["profile"] })
-)
+);
 
 app.get("/auth/google/reviews",
     passport.authenticate( 'google', {
@@ -86,7 +98,6 @@ app.get("/auth/google/reviews",
         res.redirect('/reviews')
       }
 );
-
 
 app.get("/about", function(req, res) {
   res.render("about")
@@ -113,40 +124,45 @@ app.get("/register", function(req, res) {
 })
 
 app.get("/reviews", function(req, res) {
-    if(req.isAuthenticated()) {
-      res.render("reviews")
+  User.find({ "review" : {$ne: null}}, function(err, foundUsers) {
+    if(err) {
+      console.log(err);
     } else {
-      res.redirect("/login")
+      if(foundUsers) {
+        res.render("reviews", {usersWithReviews: foundUsers});
+      }
     }
+  });
+});
+
+
+
+app.get("/submit", function(req,res) {
+  if(req.isAuthenticated()) {
+    res.render("submit")
+  } else {
+    res.redirect("/login")
+  }
 })
 
-// app.post("/register", function(req, res) {
-//   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
-//     const newUser = new User({
-//       email: req.body.email,
-//       password: hash
-//     });
-//
-//     newUser.save(function(err) {
-//       if (err) {
-//         console.log(err)
-//       } else {
-//         res.render("reviews", {
-//           username: newUser.email
-//         })
-//       }
-//     });
-//   })
-// });
+app.post("/submit", function(req,res){
+  const submittedReview = req.body.review;
 
-app.get("/submit", function(req,res){
-
+  User.findById(req.user.id, function(err, foundUser) {
+    if(err){
+      console.log(err);
+    } else {
+      if (foundUser) {
+      foundUser.review = submittedReview;
+      foundUser.save(function() {
+        res.redirect("/reviews")
+      });
+    }
+  }
+  })
 })
 
-app.get("/logout", function(req,res) {
-  req.logout();
-  res.redirect("/")
-})
+
 
 app.post("/register", function(req,res){
   User.register({username:req.body.username}, req.body.password, function(err,user) {
@@ -157,28 +173,35 @@ app.post("/register", function(req,res){
       passport.authenticate("local") (req,res, function(){
         res.redirect("/reviews")
 
-      })
+      });
     }
-  })
-})
-
+  });
+});
 
 
 app.post("/login", function(req,res) {
+
   const user = new User({
     username: req.body.username,
-    password: req.body.passport
+    password: req.body.password
   })
+
+
 
   req.login(user, function(err) {
     if(err) {
       console.log(err)
     } else {
       passport.authenticate("local") (req,res,function(){
-        res.render("reviews", {username: user.username})
+        res.redirect("/reviews")
       })
     }
   })
+})
+
+app.get("/logout", function(req,res) {
+  req.logout();
+  res.redirect("/")
 })
 
 // TODO: should be redirect but trying to surface username
