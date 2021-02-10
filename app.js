@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express = require("express");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
@@ -8,9 +9,13 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const findOrCreate = require("mongoose-findorcreate");
-
 const app = express();
 
+
+
+
+// let scene = document.getElementById('scene');
+// var parallaxInstance = new Parallax(scene);
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");

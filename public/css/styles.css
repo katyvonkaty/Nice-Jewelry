@@ -11,6 +11,13 @@ body {
   background-color: transparent !important;
 }
 
+.card {
+
+  -webkit-box-shadow: 2px 2px 2px 2px #eee;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    2px 2px 2px 2px #eee;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         2px 2px 2px 2px #eee;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+
+}
 
 h1, h2, h3, h4, h5 {
   font-weight: 700;
@@ -49,7 +56,7 @@ h1, h2, h3, h4, h5 {
 .jumbotron {
   background-image: url("https://cdn.shopify.com/s/files/1/0039/8002/files/finejewelrybanner_9b34ccb7-e08d-4c47-abee-2813b0b336ed_2000x.jpg?v=1564494142");
   height: 70vh;
-  background-size: cover;
+  background-size: cover !important;
 }
 
 .topnav {
