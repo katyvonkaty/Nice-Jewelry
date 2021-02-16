@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&display=swap');
 
 html {
-  min-height: 100%;
+  height: 100% !important;
   width:100%;
    position: relative;
 }
 
 body {
   font-family: 'Kumbh Sans', sans-serif;
+  height: 100% !important;
+
   background-color: transparent !important;
 }
 
@@ -206,7 +208,7 @@ border-color: black;
 }
 
 #sticky-footer {
-  position: absolute;
+  position: relative;
  bottom: 0;
  width: 100%;
   padding-right:0;
