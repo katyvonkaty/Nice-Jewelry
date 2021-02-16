@@ -166,7 +166,11 @@ padding: 50px;
 }
 
 .intermezzo {
-  margin-top: 40px;
+  margin-top: 500px;
+}
+
+.copie {
+  margin-bottom:300px;
 }
 
 .btn-outline-primary, .btn-primary {
