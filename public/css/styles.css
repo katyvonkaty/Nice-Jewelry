@@ -9,16 +9,24 @@ html {
 body {
   font-family: 'Kumbh Sans', sans-serif;
   height: 100% !important;
-
   background-color: transparent !important;
 }
 
-.card {
+.ear {
+  margin-top:40px;
+  margin-bottom:40px;
 
+
+}
+
+.card {
   -webkit-box-shadow: 2px 2px 2px 2px #eee;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
   -moz-box-shadow:    2px 2px 2px 2px #eee;  /* Firefox 3.5 - 3.6 */
   box-shadow:         2px 2px 2px 2px #eee;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
 
+.earrings {
+  width:40%;
 }
 
 h1, h2, h3, h4, h5 {
