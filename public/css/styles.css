@@ -75,8 +75,9 @@ h1, h2, h3, h4, h5 {
 }
 
 .jumbotron {
-  background-image: url("https://cdn.shopify.com/s/files/1/0039/8002/files/finejewelrybanner_9b34ccb7-e08d-4c47-abee-2813b0b336ed_2000x.jpg?v=1564494142");
-  height: 70vh;
+  background-image: url("https://cdn.shopify.com/s/files/1/0039/8002/files/BreadFinancing_BANNER_HP_eleonore1_2376x.jpg?v=1602695163");
+  height: 80vh;
+  width:100%;
   background-size: cover !important;
 }
 
@@ -183,7 +184,7 @@ padding: 50px;
   height: 70vh;
   background-size: cover;
   margin-bottom: 40px;
-  background-image: url("https://cdn.shopify.com/s/files/1/0039/8002/collections/Newness_NEW_Option_3_3d9208e7-f21e-4ebb-971b-f4699eb99067_2000x.jpg?v=1565017170") ;
+  background-image: url("https://cdn.shopify.com/s/files/1/0039/8002/files/New_York_Jewelry_Store_720x.jpg?v=1562785956") ;
 }
 
 .intermezzo {
